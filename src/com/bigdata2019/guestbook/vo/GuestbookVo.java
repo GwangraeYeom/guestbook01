@@ -7,12 +7,23 @@ public class GuestbookVo {
 	private String contents;
 	private String regDate;
 	
+	public GuestbookVo() {
+	}
+	
+	public GuestbookVo(String name, String password, String contents) {
+		this.name = name;
+		this.password = password;
+		this.contents = contents;
+	}
+	
 	public Long getNo() {
 		return no;
 	}
+	
 	public void setNo(Long no) {
 		this.no = no;
 	}
+	
 	public String getName() {
 		return name;
 	}

@@ -8,7 +8,7 @@ import com.bigdata2019.guestbook.vo.GuestbookVo;
 public class GuestbookDaoTest {
 
 	public static void main(String[] args) {
-		//testInsert();
+		testInsert();
 		//testDelete();
 		testFindAll();
 	}
@@ -26,9 +26,9 @@ public class GuestbookDaoTest {
 	
 	public static void testInsert() {
 		GuestbookVo vo = new GuestbookVo();
-		vo.setName("둘리");
+		vo.setName("두번째사람");
 		vo.setPassword("1234");
-		vo.setContents("호이");
+		vo.setContents("2");
 		
 		new GuestbookDao().insert(vo);
 	}
