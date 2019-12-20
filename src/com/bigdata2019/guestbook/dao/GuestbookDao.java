@@ -12,6 +12,50 @@ import com.bigdata2019.guestbook.vo.GuestbookVo;
 
 public class GuestbookDao {
 	
+	public Boolean delete(Long no, String password) {
+		Boolean result = false;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			conn = getConnection();
+	
+			//SQL 준비
+			String sql = 
+				" delete" + 
+				"   from guestbook" + 
+				"  where no = ?" +
+				"    and password = ?";
+					
+			pstmt = conn.prepareStatement(sql);			
+		
+			//값 바인딩
+			pstmt.setLong(1, no);
+			pstmt.setString(2, password);
+			
+			//쿼리 실행
+			int count = pstmt.executeUpdate();
+			result = (count == 1);
+			
+		} catch (ClassNotFoundException e) {
+			System.out.println("드라이버 로딩 실패:" + e);
+		} catch (SQLException e) {
+			System.out.println("error:" + e);
+		} finally {
+			try {
+				if(pstmt != null) {
+					pstmt.close();
+				}
+				if(conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return result;
+	}
+	
 	public Boolean insert(GuestbookVo vo) {
 		Boolean result = false;
 		Connection conn = null;

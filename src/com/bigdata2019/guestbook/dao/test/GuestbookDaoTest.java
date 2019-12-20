@@ -9,6 +9,7 @@ public class GuestbookDaoTest {
 
 	public static void main(String[] args) {
 		//testInsert();
+		//testDelete();
 		testFindAll();
 	}
 
@@ -19,11 +20,15 @@ public class GuestbookDaoTest {
 		}
 	}
 	
+	public static void testDelete() {
+		new GuestbookDao().delete(3L, "1234");
+	}
+	
 	public static void testInsert() {
 		GuestbookVo vo = new GuestbookVo();
-		vo.setName("또치");
+		vo.setName("둘리");
 		vo.setPassword("1234");
-		vo.setContents("테스트입니다.");
+		vo.setContents("호이");
 		
 		new GuestbookDao().insert(vo);
 	}
